@@ -1,0 +1,8 @@
+*.DS_Store
+diannex/**/*.asm
+diannex/**/*.def
+
+
+# Added by cargo
+
+/target
