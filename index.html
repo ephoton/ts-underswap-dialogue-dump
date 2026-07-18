@@ -64,6 +64,8 @@
 			<p id="loading"><span class="loader"></span>
 			Loading...</p>
 			<div id="dialogue"></div>
+            <hr></hr>
+			<p>PS: I made this after asking permission from the Team Switched director. If anyone on Team Switched wants me to take this down, just open an issue on the GitHub repo.</p>
 		</main>
 	</body>
 
@@ -77,6 +79,10 @@
 			const dump = await response.json();
 			const dialogueDiv = id("dialogue");
 			for (const segment of dump) {
+                if (segment.children.length == 0) {
+                    continue;
+                }
+
 				const segmentDiv = document.createElement("div");
 				
 				const segmentNameH2 = document.createElement("h2");
