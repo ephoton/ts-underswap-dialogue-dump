@@ -131,6 +131,8 @@ fn main() -> Result<(), Whatever> {
         }
     }
 
+    segments.sort_by(|lhs, rhs| lhs.name.cmp(&rhs.name));
+
     let json = serde_json::to_string_pretty(&segments).whatever_context("Failed to serialize")?;
 
     println!("{json}");
