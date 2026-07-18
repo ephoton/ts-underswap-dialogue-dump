@@ -2,7 +2,6 @@
 diannex/**/*.asm
 diannex/**/*.def
 dump.json
-site/dump.json
 
 
 # Added by cargo
