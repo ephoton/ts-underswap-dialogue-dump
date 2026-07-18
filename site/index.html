@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" as="font" href="8bitoperator_jve.woff" crossorigin="anonymous">
+	</head>
+
+	<style>
+		html {
+			background-color: black;
+			color: white;
+		}
+		
+		main {
+			max-width: 800px;
+			margin: auto;
+		}
+		
+		.center {
+			text-align: center;
+			margin: auto;
+		}
+		
+		/* https://github.com/HushBugger/hushbugger.github.io/blob/master/deltarune/text/index.html */
+		@font-face {
+			font-family: "8bitoperator";
+			src: url("8bitoperator_jve.woff") format("woff");
+		}
+		
+		h1, h2, pre {
+			font-family: "8bitoperator" !important;
+		}
+		
+		/* https://cssloaders.github.io */
+		.loader {
+			--color-1: #fff;
+			--size: 0.3px;
+			width: calc(48 * var(--size));
+			height: calc(48 * var(--size));
+			border: calc(5 * var(--size)) solid var(--color-1);
+			border-bottom-color: transparent;
+			border-radius: 50%;
+			display: inline-block;
+			box-sizing: border-box;
+			animation: rotation 1s linear infinite;
+		}
+		
+		@keyframes rotation {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+
+	<body>
+		<main>
+			<h1 class="center">TS!Underswap Dialogue Dump</h1>
+			<p id="loading"><span class="loader"></span>
+			Loading...</p>
+			<div id="dialogue"></div>
+		</main>
+	</body>
+
+	<script>
+		function id(name) {
+			return document.getElementById(name);
+		}
+		
+		async function main() {
+			const response = await fetch("dump.json");
+			const dump = await response.json();
+			const dialogueDiv = id("dialogue");
+			for (const segment of dump) {
+				const segmentDiv = document.createElement("div");
+				
+				const segmentNameH2 = document.createElement("h2");
+				segmentNameH2.textContent = segment.name;
+				segmentDiv.appendChild(segmentNameH2);
+				
+				const segmentPre = document.createElement("pre");
+				for (const line of segment.children) {
+					segmentPre.textContent += line + "\n";
+				}
+				segmentDiv.appendChild(segmentPre);
+				
+				dialogueDiv.appendChild(segmentDiv);
+			}
+			id("loading").remove()
+		}
+		
+		window.onload = main;
+	</script>
+</html>

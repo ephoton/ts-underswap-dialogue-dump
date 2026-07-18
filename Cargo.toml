@@ -6,3 +6,9 @@ authors = ["photon"]
 license = "GPL-3.0-only"
 
 [dependencies]
+logos = "0.16.1"
+argh = "0.1.19"
+walkdir_minimal = "1.3.0"
+snafu = "0.9.1"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.150"
