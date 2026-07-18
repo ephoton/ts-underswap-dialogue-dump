@@ -79,6 +79,10 @@
 			const dump = await response.json();
 			const dialogueDiv = id("dialogue");
 			for (const segment of dump) {
+                if (segment.children.length == 0) {
+                    continue;
+                }
+
 				const segmentDiv = document.createElement("div");
 				
 				const segmentNameH2 = document.createElement("h2");
