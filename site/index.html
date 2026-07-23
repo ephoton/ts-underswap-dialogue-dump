@@ -29,6 +29,23 @@
 			font-family: "8bitoperator";
 			src: url("8bitoperator_jve.woff") format("woff");
 		}
+
+		h1 {
+			font-size: 3em;
+		}
+
+		h2 {
+			font-size: 2em;
+		}
+
+		pre {
+			font-size: 1.5em;
+			/* background-color: #202020; */
+			padding: 0.5em;
+			border-style: solid;
+			border-color: white;
+			border-width: 0.2em;
+		}
 		
 		h1, h2, pre {
 			font-family: "8bitoperator" !important;
@@ -46,6 +63,26 @@
 			display: inline-block;
 			box-sizing: border-box;
 			animation: rotation 1s linear infinite;
+		}
+
+		pre > .arg::after {
+			font-family: monospace;
+			color: cyan;
+			content: "`arg`";
+			display: inline;
+		}
+
+		pre > span.yellow {
+			color: yellow;
+		}
+		pre > span.green {
+			color: green;
+		}
+		pre > span.blue {
+			color: blue;
+		}
+		pre > span.red {
+			color: red;
 		}
 		
 		@keyframes rotation {
@@ -91,7 +128,7 @@
 				
 				const segmentPre = document.createElement("pre");
 				for (const line of segment.children) {
-					segmentPre.textContent += line + "\n";
+					segmentPre.innerHTML += line + "\n";
 				}
 				segmentDiv.appendChild(segmentPre);
 				
